@@ -21,8 +21,7 @@
       <tbody>
 
         <tr v-for="post in paginatedPosts" :key="post.id" >
-         
-    <!-- {{ paginatedPosts(post) }} -- {{ filteredItems(post) }}-->
+        
           <td>{{ post.id}}</td>
               <td>{{post.employee_name}}</td>
               <td>{{post.employee_salary}}</td>
@@ -77,13 +76,13 @@ export default {
     },
     
    totalPages() {
-      return Math.ceil(this.posts.length / this.itemsPerPage);
+      return Math.ceil(this.filteredItems.length / this.itemsPerPage);
       
     }, 
    paginatedPosts() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.posts.slice(start, end);
+      return this.filteredItems.slice(start, end);
    },
 
   },
